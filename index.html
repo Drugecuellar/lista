@@ -80,7 +80,7 @@
   <script>
     function mostrar() {
       var caja = document.getElementById("mensaje");
-      var bytes = Uint8Array.from(atob("dGUgcXVpZXJvIG11Y2hvIGlubXVuZGE="), function (c) {
+      var bytes = Uint8Array.from(atob("dGUgcXVpZXJvIG11Y2hvIGlubXVuZGEgamFqYWogYmVzaXRv"), function (c) {
         return c.charCodeAt(0);
       });
       caja.textContent = new TextDecoder().decode(bytes);
