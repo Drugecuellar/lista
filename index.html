@@ -53,6 +53,7 @@
       margin-top: 8px;
       font-size: 1.7rem;
       line-height: 1.35;
+      white-space: pre-line;
     }
     .mensaje.show { display: block; }
   </style>
@@ -67,7 +68,7 @@
   <script>
     document.getElementById("abrir").addEventListener("click", function () {
       var caja = document.getElementById("mensaje");
-      var bytes = Uint8Array.from(atob("dGUgcXVpZXJvIG11Y2hvIGlubXVuZGE="), function (c) {
+      var bytes = Uint8Array.from(atob("dGUgcXVpZXJvIG11Y2hvIGlubXVuZGEKYmVzaXRvIGxhZ2FydGlqYQ=="), function (c) {
         return c.charCodeAt(0);
       });
       caja.textContent = new TextDecoder().decode(bytes);
