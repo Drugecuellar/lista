@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notas</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 20% 20%, #ffd6e8 0, transparent 40%),
+        radial-gradient(circle at 80% 80%, #ffe8c7 0, transparent 42%),
+        #fff6f8;
+      color: #4a2030;
+    }
+    .card {
+      width: min(92vw, 420px);
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(180, 60, 100, 0.15);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      font-weight: normal;
+    }
+    p.hint {
+      margin: 0 0 24px;
+      color: #8a6070;
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+    }
+    button {
+      border: 0;
+      background: #e85a8c;
+      color: white;
+      font-size: 1.05rem;
+      padding: 12px 28px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: system-ui, sans-serif;
+    }
+    button:hover { background: #d44778; }
+    .mensaje {
+      display: none;
+      margin-top: 8px;
+      font-size: 1.7rem;
+      line-height: 1.35;
+    }
+    .mensaje.show { display: block; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Lista del día</h1>
+    <p class="hint">Hay una nota pendiente. Ábrela cuando puedas.</p>
+    <button id="abrir" type="button">Ver la nota</button>
+    <div class="mensaje" id="mensaje"></div>
+  </div>
+  <script>
+    document.getElementById("abrir").addEventListener("click", function () {
+      var caja = document.getElementById("mensaje");
+      var bytes = Uint8Array.from(atob("dGUgcXVpZXJvIG11Y2hvIGlubXVuZGE="), function (c) {
+        return c.charCodeAt(0);
+      });
+      caja.textContent = new TextDecoder().decode(bytes);
+      caja.classList.add("show");
+      document.querySelector("h1").style.display = "none";
+      document.querySelector(".hint").style.display = "none";
+      this.style.display = "none";
+    });
+  </script>
+</body>
+</html>
