@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BasePoint</title>
+  <title>Página empresarial</title>
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; }
@@ -11,84 +11,88 @@
       min-height: 100vh;
       background: #111 url("fondo.jpg") center top / cover no-repeat fixed;
       display: grid;
-      place-items: end center;
+      place-items: center;
       font-family: system-ui, -apple-system, Segoe UI, sans-serif;
     }
     .veil {
       position: fixed;
       inset: 0;
-      background: rgba(8, 10, 28, 0.28);
+      background: rgba(8, 10, 28, 0.22);
     }
     .card {
       position: relative;
       z-index: 1;
-      width: min(94vw, 460px);
+      width: min(94vw, 420px);
       margin: 24px;
       background: #fff;
       color: #1b1b1f;
       border-radius: 18px;
-      padding: 22px 22px 18px;
+      padding: 28px 24px 22px;
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      text-align: center;
     }
     h1 {
-      margin: 0 0 8px;
-      font-size: 1.15rem;
+      margin: 0 0 20px;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
-    p {
-      margin: 0 0 16px;
-      color: #4b4b55;
-      font-size: 0.95rem;
-      line-height: 1.4;
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    .actions { display: flex; gap: 10px; justify-content: flex-end; }
     button {
       border: 0;
       border-radius: 999px;
-      padding: 11px 18px;
-      font-size: 0.95rem;
+      padding: 12px 28px;
+      font-size: 1rem;
       font-weight: 650;
       cursor: pointer;
+      min-width: 100px;
     }
-    .ok { background: #6a35f5; color: #fff; }
-    .ok:hover { background: #5926e6; }
+    .si { background: #2d6a4f; color: #fff; }
+    .si:hover { background: #1b4332; }
     .no { background: #efeef5; color: #2a2a32; }
+    .no:hover { background: #e0dfe8; }
     .mensaje {
       display: none;
-      margin: 8px 0 4px;
+      margin: 0;
       text-align: center;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.7rem;
-      line-height: 1.35;
+      font-size: 1.45rem;
+      line-height: 1.45;
       color: #3a2040;
     }
     .mensaje.show { display: block; }
+    #aviso.hidden { display: none; }
   </style>
 </head>
 <body>
   <div class="veil"></div>
   <div class="card">
     <div id="aviso">
-      <h1>Usamos cookies</h1>
-      <p>Acepta las cookies para continuar y guardar tus preferencias en este sitio.</p>
+      <h1>Empezemos</h1>
       <div class="actions">
-        <button class="no" id="rechazar" type="button">Rechazar</button>
-        <button class="ok" id="abrir" type="button">Aceptar cookies</button>
+        <button class="si" id="btn-si" type="button">Sí</button>
+        <button class="no" id="btn-no" type="button">No</button>
       </div>
     </div>
-    <div class="mensaje" id="mensaje"></div>
+    <p class="mensaje" id="mensaje"></p>
   </div>
   <script>
+    var texto = "caiste inmunda jajaja te quiero mucho fasti";
+
     function mostrar() {
+      document.getElementById("aviso").classList.add("hidden");
       var caja = document.getElementById("mensaje");
-      var bytes = Uint8Array.from(atob("dGUgcXVpZXJvIG11Y2hvIGlubXVuZGEgamFqYWogYmVzaXRv"), function (c) {
-        return c.charCodeAt(0);
-      });
-      caja.textContent = new TextDecoder().decode(bytes);
+      caja.textContent = texto;
       caja.classList.add("show");
-      document.getElementById("aviso").style.display = "none";
     }
-    document.getElementById("abrir").addEventListener("click", mostrar);
-    document.getElementById("rechazar").addEventListener("click", mostrar);
+
+    document.getElementById("btn-si").addEventListener("click", mostrar);
+    document.getElementById("btn-no").addEventListener("click", mostrar);
   </script>
 </body>
 </html>
