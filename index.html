@@ -10,25 +10,34 @@
     body {
       min-height: 100vh;
       background: #111 url("fondo.jpg") center top / cover no-repeat fixed;
-      display: grid;
-      place-items: center;
       font-family: system-ui, -apple-system, Segoe UI, sans-serif;
     }
     .veil {
       position: fixed;
       inset: 0;
-      background: rgba(8, 10, 28, 0.22);
+      z-index: 0;
+      background: rgba(8, 10, 28, 0.28);
+      pointer-events: none;
+    }
+    .card-wrap {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+      pointer-events: none;
     }
     .card {
-      position: relative;
-      z-index: 1;
-      width: min(94vw, 420px);
-      margin: 24px;
+      pointer-events: auto;
+      width: min(94vw, 460px);
       background: #fff;
       color: #1b1b1f;
       border-radius: 18px;
       padding: 28px 24px 22px;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
       text-align: center;
     }
     h1 {
@@ -71,15 +80,17 @@
 </head>
 <body>
   <div class="veil"></div>
-  <div class="card">
-    <div id="aviso">
-      <h1>Empezemos</h1>
-      <div class="actions">
-        <button class="si" id="btn-si" type="button">Sí</button>
-        <button class="no" id="btn-no" type="button">No</button>
+  <div class="card-wrap">
+    <div class="card">
+      <div id="aviso">
+        <h1>Empezemos</h1>
+        <div class="actions">
+          <button class="si" id="btn-si" type="button">Sí</button>
+          <button class="no" id="btn-no" type="button">No</button>
+        </div>
       </div>
+      <p class="mensaje" id="mensaje"></p>
     </div>
-    <p class="mensaje" id="mensaje"></p>
   </div>
   <script>
     var texto = "caiste inmunda jajaja te quiero mucho fasti";
